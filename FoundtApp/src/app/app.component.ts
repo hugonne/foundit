@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -6,13 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    {title: 'Inbox', url: '/settings', icon: 'cog'},
+    {title: 'Outbox', url: '/home/add-item', icon: 'paper-plane'}
   ];
+
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+
+  constructor(private readonly translate: TranslateService) {
+    let language = this.translate.getBrowserLang();
+    if (!language || (language != 'en' && language != 'es')) {
+      language = 'en';
+    }
+    translate.setDefaultLang(language);
+    translate.use(language);
+  }
 }
