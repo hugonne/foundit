@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { AddItemPageRoutingModule } from './add-item-routing.module';
 
 import { AddItemPage } from './add-item.page';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AddItemPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        AddItemPageRoutingModule,
+        TranslateModule
+    ],
   declarations: [AddItemPage]
 })
 export class AddItemPageModule {}
